@@ -1,17 +1,12 @@
-<!DOCTYPE html>
-<html lang="pt-br">
-<head>
-    <meta charset="UTF-8">
-    <title>Homepage</title>
-</head>
-    <body>
-        <h1>Latest posts</h1>
+{% extends 'base.html' %}
+    
+{% block content %}
+    <h1>Latest posts</h1>
 
-        {% for post in posts %}
-            <div class="post">
-                <a href="details/{{ post.id }}">{{ post.title }}</a>
-                <p>{{ post.body|truncatewords:30 }}</p>
-            </div>
-        {% endfor %}
-    </body>
-</html>
+    {% for post in posts %}
+        <div class="post">
+            <a href="{{ post.get_absolute_url }}">{{ post.title }}</a>
+            <p>{{ post.body|truncatewords:30 }}</p>
+        </div>
+    {% endfor %}
+{% endblock %}

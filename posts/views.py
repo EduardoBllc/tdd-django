@@ -9,4 +9,4 @@ def index(request):
 
 def post_detail(request, id):
     post = get_object_or_404(Post, pk=id)
-    return render(request, "posts/details.html")
+    return render(request, "posts/detail.html", {"post": post, 'title': post.title})
